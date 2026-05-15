@@ -1,17 +1,40 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
+int sum_ascii(const string& text);
 
 int main() {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int) a << endl;
-    int b = 66;
-    cout << b << endl;
-    cout << (char) b << endl;
+    string user_input;
+
+    cout << "Enter a string: ";
+    cin >> user_input;
+
+    cout << "ASCII sum: "
+         << sum_ascii(user_input)
+         << endl;
     
 
     return 0;
+}
+
+
+// sum_ascii() calculates the sum of the ASCII values of the string
+// arguments: a string
+// returns: interger ASCII total
+
+
+int sum_ascii(const string& text)
+{
+    int total = 0;
+
+    for (char ch : text)
+    {
+        total += (int) ch;
+    }
+
+    return total;
 }
 
 /* 
