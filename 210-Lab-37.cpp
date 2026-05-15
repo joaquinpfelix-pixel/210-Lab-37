@@ -1,18 +1,41 @@
+// COMSC-210 | Lab 37 | Joaquin Felix
+
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
+
+// Constants
+const string DATA_FILE = "lab-37-data-3.txt";
 
 int sum_ascii(const string& text);
 
 int main() {
-    string user_input;
+    ifstream fin(DATA_FILE);
+    
+    if (!fin)
+    {
+        cout << "ERROR: Could not open "
+             << DATA_FILE
+             << endl;
+        
+        return 0;
+    }
 
-    cout << "Enter a string: ";
-    cin >> user_input;
 
-    cout << "ASCII sum: "
-         << sum_ascii(user_input)
+    string code;
+    long long grand_total = 0;
+
+    while (fin >> code)
+    {
+        grand_total += sum_ascii(code);
+    }
+
+    fin.close();
+
+    cout << "Grand total: "
+         << grand_total
          << endl;
     
 
