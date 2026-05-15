@@ -89,7 +89,7 @@ int gen_hash_index(const string& text)
         total += (int) ch;
     }
 
-    return total;
+    return total % HASH_SIZE;
 }
 
 /* 
