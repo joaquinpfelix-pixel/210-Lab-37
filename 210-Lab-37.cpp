@@ -1,4 +1,4 @@
-// COMSC-210 | Lab 37 | Joaquin Felix
+// COMSC-210 | Lab 38 | Joaquin Felix
 
 #include <iostream>
 #include <string>
@@ -13,10 +13,22 @@ const string DATA_FILE = "lab-37-data-3.txt";
 const int HASH_SIZE = 1000;
 const int DISPLAY_LIMIT = 10;
 
+// Function Prototypes
+
 // gen_hash_index() calculates the hash index for the string
 // arguments: a string
 // returns: interger hash index
 int gen_hash_index(const string& text);
+
+// display_menu() shows the menu
+// arguments: none
+//returns: nothing
+void display_menu();
+
+// print_entries() prints first entries
+// arguments: hash table
+// returns: nothing
+void print_entries(const map<int, list<string>>& hash_table);
 
 int main() {
     ifstream fin(DATA_FILE);
@@ -49,27 +61,27 @@ int main() {
 
     fin.close();
 
-    int displayed = 0;
+    int choice = 0;
 
-    for (auto pair : hash_table)
+    while (choice != 6)
     {
-        cout << "Hash Index: "
-             << pair.first
-             << endl;
-        cout << "Codes: ";
+        display_menu();
 
-        for (string code_value : pair.second)
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        cout << endl;
+
+        switch (choice)
         {
-            cout << code_value << " ";
+            case 1: print_entries(hash_table);
+                    break;
+            case 6: cout << "Exiting program..." << endl;
+                    break;
+            default: cout << "Option not added yet." << endl;
         }
-        cout << endl << endl;
 
-        displayed++;
-
-        if (displayed >= DISPLAY_LIMIT)
-        {
-            break;
-        }
+        cout << endl;
     }
     
 
@@ -91,6 +103,55 @@ int gen_hash_index(const string& text)
 
     return total % HASH_SIZE;
 }
+
+
+void display_menu() 
+{
+    cout << "===== HASH TABLE MENU =====" << endl;
+    cout << "1. Display Hash Table" << endl;
+    cout << "2. Search for a key" << endl;
+    cout << "3. Add a key" << endl;
+    cout << "4. Remove a key" << endl;
+    cout << "5. Modify a key" << endl;
+    cout << "6. Exit" << endl;
+    cout << endl;
+}
+
+
+void print_entries(const map<int, list<string>>& hash_table)
+{
+    int displayed = 0;
+
+    for (const auto& pair : hash_table)
+    {
+        cout << "Hash Index: "
+             << pair.first
+             << endl;
+        cout << "Codes: ";
+
+        for (const string& code : pair.second)
+        {
+            cout << code << " ";
+        }
+        cout << endl << endl;
+
+        displayed++;
+
+        if (displayed >= DISPLAY_LIMIT)
+        {
+            break;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 
 /* 
 These targets are present in the dataset and can be used for testing:
