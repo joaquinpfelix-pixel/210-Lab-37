@@ -38,7 +38,7 @@ void search_key(const map<int, list<string>>& hash_table);
 // add_key() adds a code
 // arguments: hash table
 // returns: nothing
-void add_key(map<int, list<stirng>>& hash_table);
+void add_key(map<int, list<string>>& hash_table);
 
 int main() {
     ifstream fin(DATA_FILE);
@@ -88,7 +88,7 @@ int main() {
                     break;
             case 2: search_key(hash_table);
                     break;
-            case 3: add_key(hash_tabe);
+            case 3: add_key(hash_table);
                     break;
             case 6: cout << "Exiting program..." << endl;
                     break;
@@ -197,7 +197,7 @@ void add_key(map<int, list<string>>& hash_table)
 
     int hash_index = gen_hash_index(new_code);
 
-    hash_table[hash_index].pudh_back(new_code);
+    hash_table[hash_index].push_back(new_code);
 
     cout << "Code added successfully." << endl;
 }
