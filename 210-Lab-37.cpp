@@ -156,7 +156,7 @@ void search_key(const map<int, list<string>>& hash_table)
 {
     string target;
 
-    cout << "Enter code to search: ": 
+    cout << "Enter code to search: "; 
     cin >> target;
 
     int hash_index = gen_hash_index(target);
@@ -166,7 +166,7 @@ void search_key(const map<int, list<string>>& hash_table)
     if (found == hash_table.end())
     {
         cout << "Code not found." << endl;
-        return:
+        return;
     }
 
     for (const string& code : found->second)
@@ -174,7 +174,7 @@ void search_key(const map<int, list<string>>& hash_table)
         if (code == target)
         {
             cout << "Code found." << endl;
-            return:
+            return;
         }
     }
 
