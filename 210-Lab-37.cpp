@@ -241,7 +241,7 @@ void remove_key(map<int, list<string>>& hash_table)
 void modify_key(map<int, list<string>>& hash_table)
 {
     string old_code;
-    string new_code:
+    string new_code;
 
     cout << "Enter code to modify: ";
     cin >> old_code;
