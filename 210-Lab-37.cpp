@@ -30,6 +30,11 @@ void display_menu();
 // returns: nothing
 void print_entries(const map<int, list<string>>& hash_table);
 
+// search_key() searches for a code
+// arguments: hash table
+// returns: nothing
+void search_key(const map<int, list<string>>& hash_table);
+
 int main() {
     ifstream fin(DATA_FILE);
     
@@ -75,6 +80,8 @@ int main() {
         switch (choice)
         {
             case 1: print_entries(hash_table);
+                    break;
+            case 2: search_key(hash_table);
                     break;
             case 6: cout << "Exiting program..." << endl;
                     break;
@@ -145,7 +152,34 @@ void print_entries(const map<int, list<string>>& hash_table)
 }
 
 
+void search_key(const map<int, list<string>>& hash_table)
+{
+    string target;
 
+    cout << "Enter code to search: ": 
+    cin >> target;
+
+    int hash_index = gen_hash_index(target);
+
+    auto found = hash_table.find(hash_index);
+
+    if (found == hash_table.end())
+    {
+        cout << "Code not found." << endl;
+        return:
+    }
+
+    for (const string& code : found->second)
+    {
+        if (code == target)
+        {
+            cout << "Code found." << endl;
+            return:
+        }
+    }
+
+    cout << "Code not found." << endl;
+}
 
 
 
