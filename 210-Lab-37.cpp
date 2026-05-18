@@ -40,6 +40,11 @@ void search_key(const map<int, list<string>>& hash_table);
 // returns: nothing
 void add_key(map<int, list<string>>& hash_table);
 
+// remove_key() removes a code
+// arguments: hash table
+// returns: nothing
+void remove_key(map<int, list<string>>& hash_table);
+
 int main() {
     ifstream fin(DATA_FILE);
     
@@ -89,6 +94,8 @@ int main() {
             case 2: search_key(hash_table);
                     break;
             case 3: add_key(hash_table);
+                    break;
+            case 4: remove_key(hash_table);
                     break;
             case 6: cout << "Exiting program..." << endl;
                     break;
@@ -202,7 +209,27 @@ void add_key(map<int, list<string>>& hash_table)
     cout << "Code added successfully." << endl;
 }
 
+void remove_key(map<int, list<string>>& hash_table)
+{
+    string target;
 
+    cout << "Enter code to remove: ";
+    cin >> target;
+
+    int hash_index = gen_hash_index(target);
+
+    auto found = hash_table.find(hash_index);
+
+    if (found == hash_table.end())
+    {
+        cout << "Code not found." << endl;
+        return;
+    }
+
+    found->second.remove(target);
+
+    cout << "Code removed successfully." << endl;
+}
 
 
 
