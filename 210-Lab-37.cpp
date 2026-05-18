@@ -35,6 +35,11 @@ void print_entries(const map<int, list<string>>& hash_table);
 // returns: nothing
 void search_key(const map<int, list<string>>& hash_table);
 
+// add_key() adds a code
+// arguments: hash table
+// returns: nothing
+void add_key(map<int, list<stirng>>& hash_table);
+
 int main() {
     ifstream fin(DATA_FILE);
     
@@ -82,6 +87,8 @@ int main() {
             case 1: print_entries(hash_table);
                     break;
             case 2: search_key(hash_table);
+                    break;
+            case 3: add_key(hash_tabe);
                     break;
             case 6: cout << "Exiting program..." << endl;
                     break;
@@ -181,6 +188,19 @@ void search_key(const map<int, list<string>>& hash_table)
     cout << "Code not found." << endl;
 }
 
+void add_key(map<int, list<string>>& hash_table)
+{
+    string new_code;
+
+    cout << "Enter new code: ";
+    cin >> new_code;
+
+    int hash_index = gen_hash_index(new_code);
+
+    hash_table[hash_index].pudh_back(new_code);
+
+    cout << "Code added successfully." << endl;
+}
 
 
 
